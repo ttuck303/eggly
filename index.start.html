@@ -1,4 +1,4 @@
-<!doctype html>
+ <!doctype html>
 <html ng-app="Eggly">
     <head>
         <meta charset="utf-8">
@@ -10,19 +10,20 @@
 
         <link rel="stylesheet" href="assets/css/eggly.css">
         <link rel="stylesheet" href="assets/css/animations.css">
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
     </head>
     <body ng-controller="MainCtrl as main">
+
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <a href="#"><img class="logo" src="assets/img/eggly-logo.png"></a>
                     <ul class="nav nav-sidebar">
-                        <li ng-repeat="category in main.categories"><a href='#'>{{category.name}}</a></li>    
+                        <li ng-repeat="category in main.categories">
+                            <a href='#' ng-click="main.setCurrentCategory(category)">{{category.name}}</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <div ng-repeat='bookmark in main.bookmarks'>
+                    <div ng-repeat='bookmark in main.bookmarks | filter:{category:main.currentCategory.name}'>
                         <button type="button" class="close">&times;</button>
                         <button type="button" class="btn btn-link"><span class="glyphicon glyphicon-pencil"></span></button>
                         <a href="{{bookmark.url}}" target="_blank">{{bookmark.title}}</a>
@@ -31,7 +32,7 @@
                 </div>
             </div>
         </div>
-
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>

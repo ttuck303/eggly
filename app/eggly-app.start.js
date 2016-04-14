@@ -2,7 +2,6 @@ var app = angular.module("Eggly", [])
 
 .controller("MainCtrl", function(){
   var main = this;
-  main.hello = "hello, pwease";
 
   main.categories = [
     {"id": 0, "name": "Development"},
@@ -22,5 +21,13 @@ var app = angular.module("Eggly", [])
     {"id": 7, "title": "Wimp", "url": "http://wimp.com", "category": "Humor" },
     {"id": 8, "title": "Dump", "url": "http://dump.com", "category": "Humor" }
   ];
+
+  main.currentCategory = null;
+
+  function setCurrentCategory(category){
+    main.currentCategory = category;
+  }
+
+  main.setCurrentCategory = setCurrentCategory;
 
 })
