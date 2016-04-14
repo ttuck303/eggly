@@ -12,13 +12,12 @@
         <link rel="stylesheet" href="assets/css/animations.css">
     </head>
     <body ng-controller="MainCtrl as main">
-
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
-                    <a href="#"><img class="logo" src="assets/img/eggly-logo.png"></a>
+                    <a href="#" ng-click="main.setCurrentCategory(null)"><img class="logo" src="assets/img/eggly-logo.png"></a>
                     <ul class="nav nav-sidebar">
-                        <li ng-repeat="category in main.categories">
+                        <li ng-repeat="category in main.categories" ng-class="{'active':main.isCurrentCategory(category)}">
                             <a href='#' ng-click="main.setCurrentCategory(category)">{{category.name}}</a></li>
                     </ul>
                 </div>

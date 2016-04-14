@@ -28,6 +28,11 @@ var app = angular.module("Eggly", [])
     main.currentCategory = category;
   }
 
+  function isCurrentCategory(category){
+    return main.currentCategory !== null && category === main.currentCategory.name
+  }
+
   main.setCurrentCategory = setCurrentCategory;
+  main.isCurrentCategory = isCurrentCategory;
 
 })
